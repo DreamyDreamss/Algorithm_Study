@@ -1,13 +1,10 @@
 def solution(n, left, right):
     answer = []
 
-    arr = [[0 for j in range(n)] for i in range(n)]
-
-    for i in range(n):
-        for j in range(n):
-            arr[i] 
-
+    for i in range(left,right+1):
+        print(i)
+        answer.append(max(i%n,i//n)+1)
     return answer
 
 
-solution(3,1,1)
+solution(6,1,5)
