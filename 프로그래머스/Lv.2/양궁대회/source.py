@@ -1,20 +1,3 @@
-# def solution(n, info):
-#     answer = [0,0,0,0,0,0,0,0,0,0,0]
-#     # value cost idx
-#     cost = [[round((10-idx)/(value+1),2),value+1,10-idx] for idx,value in enumerate(info)]
-#     cost.sort(key= lambda x:x[0],reverse=True)
-
-#     idx=0
-#     while n>0 and idx<=11:
-#         if cost[idx][1]<=n:
-#             n -= cost[idx][1]
-#             answer[cost[idx][2]]= cost[idx][1]
-#         idx+=1
-#     print(answer[::-1])
-
-#     return answer
-
-# solution(5,[2,1,1,1,0,0,0,0,0,0,0])
 import copy
 
 def compare(info,comp):
