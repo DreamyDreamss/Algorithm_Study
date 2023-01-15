@@ -4,23 +4,35 @@ def solution(orders, course):
     answer = []
     counting_li = {}
     
-    for i in range(0,26):
-        counting_li[chr(ord('A')+i)] = 0
-    
     for order in orders:
-        for ch in range(len(order)):
-            #print(order[ch])
-            counting_li[order[ch]] += 1
-            
+        li = list(order)
+        li.sort()
+        for lens in course:
+            for st in combinations(li,lens):
+                wd = ''.join(st)
+                if wd in counting_li:
+                    counting_li[wd] += 1
+                else:
+                    counting_li[wd] = 1
+    #print(counting_li)            
     course_li= []
-    for key in counting_li.keys():
-        if counting_li[key] >= 2:
-            course_li.append(key)
     
-    print(course_li)
-    for cnt in course:
-        for i in combinations(course_li,cnt):
-            answer.append(''.join(i))
-    print(answer)
+    for lens in course:
+        tmp = []
+        max_value = 0
+        for key,value in list(counting_li.items()):
+            if value < 2:
+                del counting_li[key]    
+            elif len(key) == lens:
+                if max_value < value:
+                    max_value = value
+                    tmp.clear()
+                    tmp.append(key)
+                elif max_value == value:
+                    tmp.append(key)
+                
+        answer.extend(tmp)
     answer.sort()
     return answer
+
+#solution(["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"],[2,3,4])
