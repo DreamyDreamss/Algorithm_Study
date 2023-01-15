@@ -1,3 +1,5 @@
+from collections import deque
+
 info_dict = [[[[[]for _ in range(2)] for _ in range(2)] for _ in range(2)] for _ in range(3)]
 
 def convert(li):
@@ -9,14 +11,18 @@ def convert(li):
     return [lang[li[0]],pos[li[1]],lev[li[2]],food[li[3]],li[4]]
 
 def counting_func(qry):
-    lang = {"cpp":0,"java":1,"python":2}
-    pos = {"backend":0,"frontend":1}
-    lev = {"junior":0,"senior":1}
-    food = {"chicken":0,"pizza":1}
-    
-    ans = []
+    lang = {"cpp":0,"java":1,"python":2,"-":3}
+    pos = {"backend":0,"frontend":1,"-":2}
+    lev = {"junior":0,"senior":1,"-":2}
+    food = {"chicken":0,"pizza":1,"-":2}
 
-    if qry[0]== "-":
+    ans = deque()
+
+    if lang[qry[0]] == 3:
+        for _ in len(ans):
+            tmp = ans.popleft(0)
+            tmp.append(0)
+            ans.append(tmp)
 
     for a in range(3):
 
