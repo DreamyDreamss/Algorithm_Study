@@ -47,13 +47,13 @@ def solution(users, emoticons):
             return
 
         for i in range(0,len(emoticons)):
-            for j in range(1,41):
+            for j in range(10,41,10):
                 nw_emo.append((j,(emoticons[idx] * (100-j))//100))
                 dfs(idx+1,nw_emo)
                 nw_emo.pop()
 
     dfs(0,[])
-  
+    
     return answer
 
 
