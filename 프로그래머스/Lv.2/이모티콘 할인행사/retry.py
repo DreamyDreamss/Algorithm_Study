@@ -16,7 +16,7 @@ def dfs(emo_idx,user):
         #print(user)
         amt,cnt = 0,0
         for i in range(len(user)):
-            if user[i][1] >0:
+            if user[i][1] >0:   
                 amt += users[i][1] - user[i][1]
             else:
                 cnt += 1
@@ -36,7 +36,5 @@ def dfs(emo_idx,user):
                 item[1] -= dis_idx[1]
         dfs(emo_idx+1,t)
         
-
-
 dfs(0,users)
 print(MAX_CNT,MAX_AMT)
